@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Sign Up!</h1>
+
+<form class="w3-container" method="POST" action="{% url 'signup' %}">
+    {% csrf_token %}
+
+    <label>Username</label>
+    <input class="w3-input" type="text" name="username">
+    <br>
+    <label>Password</label>
+    <input class="w3-input" type="password" name="password1">
+    <br>
+    <label>Confirm Password</label>
+    <input class="w3-input" type="password" name="password2">
+    {% if error %}
+    <br>
+    <div class="w3-panel w3-yellow w3-round w3-small">
+        <h4 class="w3-center">{{ error }}</h4>
+    </div>
+    {% endif %}
+    <br>
+    <br>
+    <input class="w3-button w3-block w3-ripple w3-round-xxlarge w3-xlarge" type="submit" value="Sign Up!">
+        
+</form>
+
+{% endblock %}
