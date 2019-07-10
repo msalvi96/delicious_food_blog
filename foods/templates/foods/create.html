@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Create!</h1>
+
+<form class="w3-container" method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <label>Name</label>
+    <input class="w3-input" type="text" name="name">
+    <br>
+    <label>Restaurant</label>
+    <input class="w3-input" type="text" name="restaurant">
+    <br>
+    <label>Headline</label>
+    <input class="w3-input" type="text" name="headline">
+    <br>
+    <label>Description</label>
+    <input class="w3-input" type="textbox" name="description">
+    <br>
+    <label>Image</label>
+    <input class="w3-input" type="file" name="image">
+    <br>
+    {% if error %}
+    <br>
+    <div class="w3-panel w3-yellow w3-round w3-small">
+        <h4 class="w3-center">{{ error }}</h4>
+    </div>
+    {% endif %}
+    <br>
+    <br>
+    <input class="w3-button w3-block w3-ripple w3-round-xxlarge w3-xlarge" type="submit" value="Add Food!">
+        
+</form>
+
+{% endblock %}

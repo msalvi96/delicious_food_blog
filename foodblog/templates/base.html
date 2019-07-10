@@ -58,8 +58,17 @@
     <body>
         <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
             <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button">Close Menu</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'create' %}" onclick="w3_close()" class="w3-bar-item w3-button">Create</a>
+            <a href="javascript:{document.getElementById('logout').submit()}" onclick="">Logout</a>
+            <form id="logout" method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <input type="hidden" />
+            </form>
+            {% else %}
             <a href="{% url 'signup' %}" onclick="w3_close()" class="w3-bar-item w3-button">Sign Up</a>
             <a href="{% url 'login' %}" onclick="w3_close()" class="w3-bar-item w3-button">Login</a>
+            {% endif %}
         </nav>
                   
                   <!-- Top menu -->

@@ -6,6 +6,7 @@ class Food(models.Model):
     name = models.CharField(max_length=255)
     pub_date = models.DateTimeField()
     restaurant = models.CharField(max_length=255)
+    headline = models.CharField(max_length=255, default='Bon Appetit!')
     description = models.TextField()
     image = models.ImageField(upload_to='images/')
     likes = models.IntegerField(default=1)
