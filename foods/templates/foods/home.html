@@ -15,8 +15,6 @@
 {% for food in foods.all %}
 <div class="w3-quarter w3-margin w3-row-padding">
     <img src="{{ food.image.url }}" alt="{{ food.name }}" style="width:250px; height:250px" class="w3-padding-small w3-circle">
-    <br>
-    <br>
     <div class="w3-container w3-center" onclick="window.location='{% url 'detail' food.id %}';" style="cursor: pointer">
         <h3>{{ food.name }}</h3>
         <p>{{ food.headline }}</p>
