@@ -5,9 +5,10 @@ from django.utils import timezone
 
 # Create your views here.
 def home(request):
-    return render(request, 'foods/home.html')
+    foods = Food.objects
+    return render(request, 'foods/home.html', {'foods': foods})
 
-@login_required
+@login_required(login_url="/accounts/signup")
 def create(request):
     if request.method == 'POST':
         if request.POST['name'] and request.POST['restaurant'] and request.POST['headline'] and request.POST['description'] and request.FILES['image']:
@@ -31,3 +32,11 @@ def create(request):
 def detail(request, food_id):
     food = get_object_or_404(Food, pk=food_id)
     return render(request, 'foods/detail.html', {'food': food})
+
+@login_required(login_url="/accounts/signup")
+def likes(request, food_id):
+    if request.method == 'POST':
+        food = get_object_or_404(Food, pk=food_id)
+        food.likes += 1
+        food.save()
+        return redirect('/foods/' + str(food.id))

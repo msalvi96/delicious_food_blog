@@ -1,3 +1,31 @@
 <!DOCTYPE html>
 
-{{ food.name }}
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="w3-row">
+
+    <div class="w3-third w3-container">
+        <img src="{{ food.image.url }}" class="img-fluid w3-opacity w3-hover-opacity-off w3-circle" height="auto" />
+    </div>
+    <div class="w3-rest w3-container">
+  
+        <h1>{{ food.name }}</h1>
+        <br>
+        <h4><i>{{ food.headline }}</i></h4>
+        <br>
+        <h5>{{ food.description }}</h5>
+        <br>
+        <h4><i>Published By: {{ food.hunter.username }} on {{ food.pub_date_pretty }}</i></h4>
+        <a href="javascript:{document.getElementById('likes').submit()}"><button class="w3-button w3-block w3-ripple w3-round-xxlarge w3-xlarge">Likes {{ food.likes }}</button></a>
+    </div>
+
+</div>
+<form id="likes" method="POST" action="{% url 'likes' food.id %}">
+    {% csrf_token %}
+    <input type="hidden">
+</form>
+
+
+{% endblock %}
