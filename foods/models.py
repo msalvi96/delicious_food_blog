@@ -16,7 +16,7 @@ class Food(models.Model):
         return self.name
 
     def summary(self):
-        return self.description[:100]
+        return self.description[:250]
 
     def pub_date_pretty(self):
         return self.pub_date.strftime('%b %e %Y')

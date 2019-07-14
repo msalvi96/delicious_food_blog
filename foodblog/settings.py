@@ -26,7 +26,9 @@ SECRET_KEY = 'u1=%ni(^@ijq$(adi=b$7ioc5-996i*l(pvamti^re7&y-@+0x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['deliciousfoodblog.herokuapp.com']
+ALLOWED_HOSTS = ['deliciousfoodblog.herokuapp.com',
+                'localhost',
+]
 
 
 # Application definition

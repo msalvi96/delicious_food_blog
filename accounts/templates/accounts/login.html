@@ -15,11 +15,10 @@
     <input class="w3-input" type="password" name="password">
     {% if error %}
     <br>
-    <div class="w3-panel w3-yellow w3-round w3-small">
-        <h4 class="w3-center">{{ error }}</h4>
+    <div class="alert alert-warning" role="alert">
+        <h5 class="w3-center">{{ error }}</h5>
     </div>
     {% endif %}
-    <br>
     <br>
     <input class="w3-button w3-block w3-ripple w3-round-xxlarge w3-xlarge" type="submit" value="Login!">
         
